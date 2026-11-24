@@ -30,3 +30,7 @@ M03: cadastro de perfil e listagem de arenas próprias. Cadastro de arenas e cam
 ## Gestão de arenas (M04)
 
 Proprietário: /painel/arenas. Cadastro e edição, campos ativos/inativos, faixas semanais em R$/hora, endereço e telefone comercial públicos, publicação e despublicação, galeria com bucket privado arena-photos. Fotos JPEG/PNG/WebP até 2 MiB (máximo 8 via UI); links assinados de 5 minutos. O acesso ao banco e Storage usa o JWT do usuário e RLS. Publicação exige contato válido e, na aplicação, campos ativos com preço. Faixas semanais representam funcionamento, não disponibilidade real. Reserva online e agenda ainda não habilitadas. Alteração de faixa: remover e cadastrar nova. Controle de planos, validação E2E, quotas no banco e publicação transacional serão refinados antes do MVP.
+
+## M05 Agenda
+
+/painel/agenda: dia, semana por campo, filtros, horários configurados, reservas manuais, bloqueios, cancelamento e pagamento. Manaus UTC-4; atualização periódica a cada 30 segundos sem interromper formulários. Reservas públicas e Realtime nativo pendentes. Ações verificam o proprietário e usam RLS; exclusão PostgreSQL protege conflitos. A referência visual é design/doop/ZscOBpX2nd.html e LKoQ9ia95S.html.
