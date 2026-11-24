@@ -37,3 +37,7 @@ Proprietário: /painel/arenas. Cadastro e edição, campos ativos/inativos, faix
 
 ## Oferta comercial vigente
 Novos proprietários de arenas: 30 dias de teste gratuito. Essencial R$ 79/mês e Pro R$ 129/mês (valores provisórios), sem alteração nos preços ou comissão. O módulo de assinaturas (M10) deverá controlar ativação, prazo, expiração e contratação; estes controles ainda não existem.
+
+## Diretório de arenas externas
+
+Tabela external_arenas separada de arenas/courts/calendar_entries. Não cria usuário, agenda, reserva, preço de disponibilidade ou vínculo com o BoraCampo. Importação de candidatos começa com pending_review; publicar somente após verificar fonte, funcionamento, endereço/Place ID e direitos de reutilização. Campos de fonte e coleta são internos; RLS expõe somente aprovados não vinculados. Sem escritas pelo cliente. Quando um proprietário adere, verificar identidade e vincular linked_arena_id para remover a duplicata do diretório. Google Maps URLs (sem chave e sem API de busca/armazenamento); link de contato somente quando confirmado. Sem foto ou preço fictícios. O ZIP de design contém dados fictícios e não deve alimentar o catálogo. Importar o levantamento real quando o arquivo estiver acessível.
