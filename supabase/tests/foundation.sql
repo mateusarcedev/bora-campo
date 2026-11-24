@@ -7,7 +7,7 @@ declare
 begin
  begin
   insert into auth.users(id,email) values (u1,u1::text||'@example.invalid'),(u2,u2::text||'@example.invalid');
-  insert into public.arenas(id,owner_id,slug,name,neighborhood,published) values (a1,u1,'test-'||a1,'Teste 1','Teste',true),(a2,u2,'test-'||a2,'Teste 2','Teste',false);
+  insert into public.arenas(id,owner_id,slug,name,neighborhood,address,contact_phone,published) values (a1,u1,'test-'||a1,'Teste 1','Teste','Rua teste 1','92999999999',true),(a2,u2,'test-'||a2,'Teste 2','Teste','','',false);
   insert into public.courts(id,arena_id,name,sport) values(c1,a1,'Campo 1','society'),(c2,a2,'Campo 2','society');
   insert into public.calendar_entries(arena_id,court_id,kind,status,payment_status,starts_at,ends_at) values(a1,c1,'block','confirmed','not_applicable','2030-01-01 10:00+00','2030-01-01 11:00+00');
   begin
