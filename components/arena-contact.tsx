@@ -2,12 +2,7 @@
 import {useId,useRef} from "react";
 import {Icon} from "@/components/ui";
 
-function normalizeBrazilianPhone(value?:string|null){
- const digits=(value??"").replace(/\D/g,"");
- if(/^[1-9]\d[2-9]\d{7,8}$/.test(digits))return "55"+digits;
- if(/^55[1-9]\d[2-9]\d{7,8}$/.test(digits))return digits;
- return null;
-}
+import {normalizeBrazilianPhone} from "@/lib/contact";
 export function ArenaContact({name,phone,whatsapp,outline=false}:{name:string;phone?:string|null;whatsapp?:string|null;outline?:boolean}){
  const dialog=useRef<HTMLDialogElement>(null);const trigger=useRef<HTMLButtonElement>(null);const heading=useId();
  const call=normalizeBrazilianPhone(phone);
