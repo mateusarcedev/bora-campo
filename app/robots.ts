@@ -1,0 +1,1 @@
+import type {MetadataRoute} from "next";export default function robots():MetadataRoute.Robots{const preview=process.env.VERCEL_ENV==="preview";return {rules:{userAgent:"*",allow:preview?undefined:"/",disallow:preview?"/":"/auth/"},sitemap:"https://bora-campo.vercel.app/sitemap.xml"}}
