@@ -26,3 +26,7 @@ Supabase Auth SSR com cookies, chave publicável, verificação de identidade no
 Configuração necessária em Supabase Auth URL Configuration: Site URL https://bora-campo.vercel.app; Redirect URLs https://bora-campo.vercel.app/auth/callback e https://bora-campo.vercel.app/auth/callback?flow=recovery. Confirmação e recuperação via PKCE exigem abrir e-mail no mesmo navegador. Nenhuma chave privilegiada é necessária. SMTP e entrega real de mensagens precisam de validação antes do lançamento. Não autorize usuários por metadados editáveis.
 
 M03: cadastro de perfil e listagem de arenas próprias. Cadastro de arenas e campos será M04. Testes E2E autenticados e lockfile pendentes.
+
+## Gestão de arenas (M04)
+
+Proprietário: /painel/arenas. Cadastro e edição, campos ativos/inativos, faixas semanais em R$/hora, endereço e telefone comercial públicos, publicação e despublicação, galeria com bucket privado arena-photos. Fotos JPEG/PNG/WebP até 2 MiB (máximo 8 via UI); links assinados de 5 minutos. O acesso ao banco e Storage usa o JWT do usuário e RLS. Publicação exige contato válido e, na aplicação, campos ativos com preço. Faixas semanais representam funcionamento, não disponibilidade real. Reserva online e agenda ainda não habilitadas. Alteração de faixa: remover e cadastrar nova. Controle de planos, validação E2E, quotas no banco e publicação transacional serão refinados antes do MVP.
