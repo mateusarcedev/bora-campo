@@ -1,16 +1,17 @@
-import {whatsappCandidate} from "@/lib/contact";
-type Channel="whatsapp"|"instagram"|"maps";
+import {normalizeBrazilianPhone,whatsappCandidate} from "@/lib/contact";
+type Channel="whatsapp"|"instagram"|"maps"|"phone";
 export function ChannelIcon({channel}:{channel:Channel}){
+ if(channel==="phone")return <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 2a14 14 0 0 1-7-7l2-2-2-5Z"/></svg>;
  if(channel==="whatsapp")return <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none"><path fill="#25D366" d="M12 2a9.7 9.7 0 0 0-8.4 14.6L2 22l5.6-1.5A10 10 0 1 0 12 2Z"/><path fill="#fff" d="M8 6.8c-.6 0-1.5.6-1.5 2.1 0 2.4 2.5 5.6 5.8 7 1.7.7 3.8.9 4.7-.6.4-.6.6-1.4.4-1.6l-2.7-1.3c-.3-.1-.5 0-.7.2l-.9 1.1c-.2.2-.5.2-.9 0-1.7-.8-2.9-2-3.5-3.4-.2-.3-.1-.5.1-.7l.8-.9c.2-.2.1-.4 0-.7L8.7 7c-.1-.2-.3-.2-.7-.2Z"/></svg>;
  if(channel==="instagram")return <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C13584" strokeWidth="2" strokeLinecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r="1" fill="#F77737" stroke="none"/></svg>;
  return <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path fill="#34A853" d="M12 1a8.5 8.5 0 0 0-8.5 8.5c0 3.9 4.6 8.5 7.4 12.9.6.9 1.6.9 2.2 0 2.8-4.4 7.4-9 7.4-12.9A8.5 8.5 0 0 0 12 1Z"/><path fill="#4285F4" d="M5.4 4.3a8.5 8.5 0 0 1 12.4-1L5 13.9a8.3 8.3 0 0 1 .4-9.6Z"/><path fill="#FBBC04" d="M17.8 3.3a8.5 8.5 0 0 1 .6 11.2L13 22.4c-.6.9-1.6.9-2.2 0L8 18Z"/><path fill="#EA4335" d="M5.4 4.3 11 9 16.8 4.1A8.5 8.5 0 0 0 5.4 4.3Z"/><circle cx="12" cy="9.5" r="3.5" fill="#fff"/></svg>;
 }
 export function ArenaSocialLinks({name,phone,whatsapp,instagram,maps,website}:{name:string;phone?:string|null;whatsapp?:string|null;instagram?:string|null;maps?:string|null;website?:string|null}){
- const chat=whatsappCandidate(phone,whatsapp);
+ const call=normalizeBrazilianPhone(phone);const chat=whatsappCandidate(phone,whatsapp);
  const ig=instagram&&/^https:\/\/(?:www\.)?instagram\.com\/[A-Za-z0-9_.]+\/?$/.test(instagram)?instagram:null;
  const map=maps&&maps.startsWith("https://www.google.com/maps/")?maps:null;
  const site=website&&website.startsWith("https://")?website:null;
- if(!chat&&!ig&&!map&&!site)return null;
- const items=[...(chat?[{channel:"whatsapp" as const,label:"WhatsApp",href:"https://wa.me/"+chat.number,description:chat.confirmed?"WhatsApp":"Tentar WhatsApp (número não confirmado)"}]:[]),...(ig?[{channel:"instagram" as const,label:"Instagram",href:ig,description:"Instagram"}]:[]),...(map?[{channel:"maps" as const,label:"Maps",href:map,description:"Google Maps"}]:[])];
- return <div className="arena-social"><nav aria-label={"Canais de contato de "+name} className="arena-social-links">{items.map(i=><a className={"arena-social-link social-"+i.channel} key={i.channel} href={i.href} target="_blank" rel="noopener noreferrer" aria-label={i.description+" de "+name+" (abre em outra aba)"} title={i.description}><ChannelIcon channel={i.channel}/><span>{i.label}</span></a>)}{site&&<a className="arena-social-link" href={site} target="_blank" rel="noopener noreferrer">Site</a>}</nav>{chat&&!chat.confirmed&&<small className="arena-social-note">WhatsApp não confirmado pela arena.</small>}</div>
+ if(!chat&&!ig&&!map&&!site&&!call)return null;
+ const items=[...(chat?[{channel:"whatsapp" as const,label:"WhatsApp",href:"https://wa.me/"+chat.number,description:chat.confirmed?"WhatsApp":"Tentar WhatsApp (número não confirmado)"}]:[]),...(ig?[{channel:"instagram" as const,label:"Instagram",href:ig,description:"Instagram"}]:[]),...(map?[{channel:"maps" as const,label:"Maps",href:map,description:"Google Maps"}]:[]),...(call?[{channel:"phone" as const,label:"Ligar",href:"tel:+"+call,description:"Fazer ligação"}]:[])];
+ return <div className="arena-social"><nav aria-label={"Canais de contato de "+name} className="arena-social-links">{items.map(i=><a className={"arena-social-link social-"+i.channel} key={i.channel} href={i.href} target={i.channel==="phone"?undefined:"_blank"} rel={i.channel==="phone"?undefined:"noopener noreferrer"} aria-label={i.description+" de "+name+(i.channel==="phone"?"":" (abre em outra aba)") } title={i.description}><ChannelIcon channel={i.channel}/><span>{i.label}</span></a>)}{site&&<a className="arena-social-link" href={site} target="_blank" rel="noopener noreferrer">Site</a>}</nav>{chat&&!chat.confirmed&&<small className="arena-social-note">WhatsApp sujeito à confirmação.</small>}</div>
 }
