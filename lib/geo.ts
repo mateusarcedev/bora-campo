@@ -1,0 +1,4 @@
+export type Point={latitude:number;longitude:number};
+export function validPoint(p:{latitude:number|null;longitude:number|null}):p is Point{return typeof p.latitude==="number"&&Number.isFinite(p.latitude)&&Math.abs(p.latitude)<=90&&typeof p.longitude==="number"&&Number.isFinite(p.longitude)&&Math.abs(p.longitude)<=180}
+export function distanceKm(a:Point,b:Point){const rad=Math.PI/180,dlat=(b.latitude-a.latitude)*rad,dlon=(b.longitude-a.longitude)*rad;const h=Math.sin(dlat/2)**2+Math.cos(a.latitude*rad)*Math.cos(b.latitude*rad)*Math.sin(dlon/2)**2;return 6371.0088*2*Math.asin(Math.sqrt(Math.min(1,Math.max(0,h))))}
+export function nearest<T extends {id:string;latitude:number|null;longitude:number|null}>(origin:Point,items:T[]){if(!validPoint(origin))return [];return items.flatMap(item=>validPoint(item)?[{item,distance:distanceKm(origin,item)}]:[]).sort((a,b)=>a.distance-b.distance||a.item.id.localeCompare(b.item.id)).slice(0,3)}

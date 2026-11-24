@@ -41,3 +41,7 @@ Novos proprietários de arenas: 30 dias de teste gratuito. Essencial R$ 79/mês 
 ## Diretório de arenas externas
 
 Tabela external_arenas separada de arenas/courts/calendar_entries. Não cria usuário, agenda, reserva, preço de disponibilidade ou vínculo com o BoraCampo. Importação de candidatos começa com pending_review; publicar somente após verificar fonte, funcionamento, endereço/Place ID e direitos de reutilização. Campos de fonte e coleta são internos; RLS expõe somente aprovados não vinculados. Sem escritas pelo cliente. Quando um proprietário adere, verificar identidade e vincular linked_arena_id para remover a duplicata do diretório. Google Maps URLs (sem chave e sem API de busca/armazenamento); link de contato somente quando confirmado. Sem foto ou preço fictícios. O ZIP de design contém dados fictícios e não deve alimentar o catálogo. Importar o levantamento real quando o arquivo estiver acessível.
+
+## Arenas próximas
+
+Geolocalização do navegador, mediante ação voluntária; se já autorizada, consulta automaticamente. Posição do jogador fica apenas no estado da página, sem armazenamento persistente ou envio ao servidor. Haversine, até 3 resultados com coordenadas, respeitando filtros. Coordenadas externas não verificadas independentemente. Proprietários podem cadastrar coordenadas comerciais opcionais. Teste: node --experimental-strip-types tests/geo.test.mjs.
