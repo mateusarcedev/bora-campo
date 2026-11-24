@@ -34,3 +34,6 @@ Proprietário: /painel/arenas. Cadastro e edição, campos ativos/inativos, faix
 ## M05 Agenda
 
 /painel/agenda: dia, semana por campo, filtros, horários configurados, reservas manuais, bloqueios, cancelamento e pagamento. Manaus UTC-4; atualização periódica a cada 30 segundos sem interromper formulários. Reservas públicas e Realtime nativo pendentes. Ações verificam o proprietário e usam RLS; exclusão PostgreSQL protege conflitos. A referência visual é design/doop/ZscOBpX2nd.html e LKoQ9ia95S.html.
+
+## Oferta comercial vigente
+Novos proprietários de arenas: 30 dias de teste gratuito. Essencial R$ 79/mês e Pro R$ 129/mês (valores provisórios), sem alteração nos preços ou comissão. O módulo de assinaturas (M10) deverá controlar ativação, prazo, expiração e contratação; estes controles ainda não existem.
