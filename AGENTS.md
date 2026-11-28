@@ -1,3 +1,6 @@
 # Bora Campo — instruções para agentes
 
 Leia docs/ROADMAP-V2.md e docs/UI-MOTION.md antes de implementar. Consulte Doop como referência visual. Respeite isolamento por arena e não confunda a demo local com o produto real. Use Motion.dev para interações React complexas, GSAP apenas quando justificado na landing e Transitions.dev para padrões consistentes de UI. Não introduza dependências sem necessidade, revisão, versão e lockfile. Valide proporcionalmente a alteração, inclusive RLS e testes quando houver dados. Não publique integração financeira sem sandbox, validação de webhook e configuração explícita. Não altere dados de clientes para testes. Documente pendências e evidências de QA.
+
+## Frontend quality
+Before modifying UI, read PRODUCT.md, DESIGN.md and docs/FRONTEND-STANDARD.md. Follow the selected library policy, preserve Doop and the shared brand. Audit existing screens before redesign; use Anthropic frontend-design and Impeccable when installed and reviewed. No wholesale UI-library replacement, generic default themes, or unreviewed agent hooks. Report visual and functional validation separately. Continue roadmap missions; do not delay critical domain work solely for cosmetic changes.
