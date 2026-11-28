@@ -1,1 +1,15 @@
-import assert from "node:assert/strict";import {initialDemo,addEntry} from "../lib/demo.ts";const d=initialDemo("2026-11-24");const e={id:"test",court:"c1",date:"2026-11-24",start:600,end:660,title:"Teste",kind:"reservation",paid:false,price:100};assert.equal(addEntry(d,e).entries.length,d.entries.length+1);assert.throws(()=>addEntry(d,{...e,start:550,end:620}),/indisponível/);assert.throws(()=>addEntry(d,{...e,court:"invalid"}));assert.throws(()=>addEntry(d,{...e,start:0}));assert.equal(d.entries.length,6);console.log("Demo tests passed");
+import assert from "node:assert/strict";import {initialDemo,addEntry,classEntries,addClass,enroll,studentCount,saveService} from "../lib/demo.ts";const d=initialDemo("2026-11-24");const e={id:"test",court:"c1",date:"2026-11-24",start:600,end:660,title:"Teste",kind:"reservation",paid:false,price:100};assert.equal(addEntry(d,e).entries.length,d.entries.length+1);assert.throws(()=>addEntry(d,{...e,start:550,end:620}),/indisponível/);assert.throws(()=>addEntry(d,{...e,court:"invalid"}));assert.throws(()=>addEntry(d,{...e,start:0}));assert.equal(d.entries.length,6);console.log("Demo tests passed");
+const day="2026-11-24";
+assert.equal(classEntries(d,day).length,3);
+assert.throws(()=>addEntry(d,{...e,start:960,end:1020}),/indisponível/);
+assert.throws(()=>addClass(d,{...d.classes[0],id:"collision"}),/indisponível/);
+const added=addClass(d,{...d.classes[0],id:"t4",name:"Nova turma",teacher:"Outro professor",start:660,end:720});
+assert.equal(added.classes.length,4);
+assert.equal(classEntries(added,day).length,4);
+assert.throws(()=>enroll(d,{id:"z",name:"Teste",classId:"t1",origin:"TotalPass",due:10,guardian:""}),/Convênio/);
+const enrolled=enroll(d,{id:"z",name:"Teste",classId:"t2",origin:"TotalPass",due:10,guardian:""});
+assert.equal(studentCount(enrolled,"t2"),4);
+assert.equal(studentCount(d,"t2"),3);
+assert.equal(saveService(d,{...d.services[0],public:false}).services[0].public,false);
+assert.equal(initialDemo(day).students.length,5);
+console.log("Teaching demo tests passed");
