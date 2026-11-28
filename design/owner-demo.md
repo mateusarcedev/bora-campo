@@ -1,3 +1,6 @@
 # Demonstração pública do proprietário V2
 
 Rota /demo, sem cadastro, noindex. Estado fictício exclusivamente em memória; sem Supabase, persistência, envio, cobrança ou integração externa. Preserva agenda dia/semana, reservas, bloqueios, campos, pagamento manual e restauração. Inclui catálogo editável, turmas recorrentes (dias da semana, horário, capacidade, professor e espaço), alunos/matrículas, frequência por data, mensalidades por competência, convênios com conferência manual, prévia pública e solicitações simuladas. A agenda deriva ocorrências de turma por dia, evitando sobreposição com locações; a criação de turma verifica espaço e professor. Prévia respeita publicação e visibilidade e não mostra dados privados. A demo não representa lançamento do módulo real. Teste: node --experimental-strip-types tests/demo.test.mjs.
+
+## V3 — parity with the authenticated workspace
+Shared WorkspaceNavigation, WorkspaceIdentity, WorkspaceMetric and WorkspaceStatus. Grouped navigation, expandable mobile menu, compact controls, operational metric strip, shared visual states and a demo notice. All existing workflows remain in memory. Reset restores the overview, filters and fictional state. Demo metrics are illustrative and never fetched from Supabase. Convênios and public requests remain simulated. Browser visual and interaction QA pending.
