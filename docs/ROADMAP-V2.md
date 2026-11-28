@@ -2,7 +2,7 @@
 
 ## M01 — Gestão real de serviços
 - M01.1 catálogo privado por arena: persistência, CRUD criação/edição/ativação, RLS, validação servidor, UI responsiva. Sem publicação pública nesta etapa.
-- M01.2 professores, turmas, ocorrências e agenda única; conflito de espaço no banco e professor, recorrência limitada e transacional.
+- M01.2 professores, turmas, ocorrências e agenda única: implementado com criação transacional, série finita (até 181 dias), conflitos de espaço e professor na mesma arena e cancelamento individual. Testes SQL de recorrência, atomicidade e isolamento passaram. Edição/renovação de série e QA autenticado pendentes.
 - M01.3 alunos, responsáveis, matrícula, capacidade, presença, mensalidades por competência; preço histórico e status; proteção LGPD.
 - M01.4 convênios manualmente, elegibilidade configurada por serviço, sem simular integração externa real.
 

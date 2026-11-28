@@ -62,3 +62,6 @@ body{background:#f8fafc}.market-hero{background:linear-gradient(110deg,#14532d 0
 @media(max-width:1100px){.bc-service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.bc-service-grid{grid-template-columns:1fr}.bc-service-summary>div{padding:12px}.bc-service-summary strong{font-size:23px}.bc-service-summary span{font-size:11px}.bc-service-form-grid{grid-template-columns:1fr}.bc-service-arena{flex-wrap:wrap}.admin-sidebar{overflow-y:visible}}
 @media(prefers-reduced-motion:reduce){.bc-btn,.bc-service-item,.bc-filter-group button,.admin-sidebar nav a{transition:none}.bc-service-dialog[open],.bc-service-dialog[open]::backdrop{animation:none}}
+
+/* M01.2 — shared form and agenda states */
+.bc-class-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:20px}.bc-class-days{grid-column:1/-1}.bc-class-days legend{font-size:12px;font-weight:750}.agenda-mobile-entry.lesson,.agenda-entry.lesson{background:#e0f2fe;color:#075985;border-color:#7dd3fc}.agenda-legend i.lesson{background:#7dd3fc}.bc-class-form .bc-btn[aria-busy=true],.bc-service-arena .bc-btn[aria-busy=true]{opacity:.65;cursor:wait}@media(max-width:650px){.bc-class-form{grid-template-columns:1fr}}
