@@ -1,0 +1,3 @@
+# Bora Campo — instruções para agentes
+
+Leia docs/ROADMAP-V2.md e docs/UI-MOTION.md antes de implementar. Consulte Doop como referência visual. Respeite isolamento por arena e não confunda a demo local com o produto real. Use Motion.dev para interações React complexas, GSAP apenas quando justificado na landing e Transitions.dev para padrões consistentes de UI. Não introduza dependências sem necessidade, revisão, versão e lockfile. Valide proporcionalmente a alteração, inclusive RLS e testes quando houver dados. Não publique integração financeira sem sandbox, validação de webhook e configuração explícita. Não altere dados de clientes para testes. Documente pendências e evidências de QA.
